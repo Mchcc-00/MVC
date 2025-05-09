@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS bdatos;
-USE bdatos;
+CREATE DATABASE IF NOT EXISTS mvc;
+USE mvc;
 
 CREATE TABLE IF NOT EXISTS t_categoria (
     id_categoria    INT (11) AUTO_INCREMENT NOT NULL,
@@ -20,6 +20,8 @@ CREATE TABLE IF NOT EXISTS t_usuarios (
     CONSTRAINT pk_usuarios PRIMARY KEY (id_usuario),
     CONSTRAINT uq_email UNIQUE (email)
 )ENGINE=InnoDB;
+
+INSERT INTO t_usuarios VALUES ('admin', 'admin', 'admin@admin.com', 'admin1234', 'admin', 'admin');
 
 CREATE TABLE IF NOT EXISTS t_pedidos (
     id_pedido   INT (11)AUTO_INCREMENT  NOT NULL,
@@ -53,7 +55,7 @@ CREATE TABLE IF NOT EXISTS t_lineapedidos (
     id_lineapedido INT (11) AUTO_INCREMENT NOT NULL,
     id_pedido      INT (11)                NOT NULL,
     id_producto    INT (11)                NOT NULL,
-    unidades       INT (10)                NOT NULL,
+    unidades       INT (100)                NOT NULL,
 
     CONSTRAINT pk_lineapedidos PRIMARY KEY (id_lineapedido),
     CONSTRAINT fk_lineapedidos_pedidos FOREIGN KEY (id_pedido) REFERENCES t_pedidos (id_pedido),
